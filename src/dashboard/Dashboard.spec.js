@@ -50,4 +50,19 @@ describe("Dashboard Component", () => {
     expect(wrapper.queryByText("Closed")).toBeInTheDocument();
     expect(ocButton).toHaveAttribute("disabled");
   });
+
+  it("displays how buttons' text changes to reflect the state the door will be in if clicked", () => {
+    const closeButton = wrapper.queryByTestId("open-close-button");
+    const lockButton = wrapper.queryByTestId("lock-unlock-button");
+    expect(closeButton).toBeInTheDocument();
+    expect(lockButton).toBeDisabled();
+
+    rtl.fireEvent.click(closeButton);
+    expect(wrapper.queryByText("Open Gate")).toBeInTheDocument();
+
+    expect(lockButton).toBeInTheDocument();
+    rtl.fireEvent.click(lockButton);
+    expect(wrapper.queryByText("Unlock Gate")).toBeInTheDocument();
+    expect(closeButton).toBeDisabled();
+  });
 });
