@@ -48,5 +48,6 @@ describe("Dashboard Component", () => {
     rtl.fireEvent.click(luButton);
     expect(wrapper.queryByText("Locked")).toBeInTheDocument();
     expect(wrapper.queryByText("Closed")).toBeInTheDocument();
+    expect(ocButton).toHaveAttribute("disabled");
   });
 });

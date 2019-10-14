@@ -12,19 +12,15 @@ beforeEach(() => {
 });
 
 describe("Controls Component", () => {
-  it("shows default open gate", () => {
-    // const openCloseButton = tools.queryByTestId("openCloseControl");
-    expect(wrapper.queryByText(/open/i)).toBeInTheDocument();
-    rtl.fireEvent.click(wrapper.queryByText(/close gate/i));
-    expect(wrapper.queryByText(/open/i)).not.toBeInTheDocument();
-    expect(wrapper.queryByText(/closed/i)).toBeInTheDocument();
+  it("can debug the output", () => {
+    wrapper.debug();
   });
-  
-//   it("shows default open gate", () => {
-//     // const openCloseButton = tools.queryByTestId("openCloseControl");
-//     expect(wrapper.queryByText(/open/i)).toBeInTheDocument();
-//     rtl.fireEvent.click(wrapper.queryByText(/close gate/i));
-//     expect(wrapper.queryByText(/open/i)).not.toBeInTheDocument();
-//     expect(wrapper.queryByText(/closed/i)).toBeInTheDocument();
-//   });
-// });
+
+  it("provide buttons to toggle the closed and locked states", () => {
+    const lockButton = wrapper.queryByTestId("lock-unlock-button");
+    expect(lockButton).toBeInTheDocument();
+
+    const closeButton = wrapper.queryByTestId("open-close-button");
+    expect(closeButton).toBeInTheDocument();
+  });
+});
